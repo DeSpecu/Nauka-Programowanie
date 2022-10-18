@@ -5,24 +5,26 @@ import java.util.Scanner;
 
 public class StringGen{
 
-    public static void main(String[] Args){
+    public static void main(String[] args) {
 
             Scanner wejscie = new Scanner(System.in);
             
-            String linia = wejscie.nextLine();
+            String linia;
             char c;
             Random rand = new Random();
             int dlugosc,litera;
             String slowo="";
-            String[] listaSlow = {};
+            List<String> listaSlow = new LinkedList<String>();
             do{
-                dlugosc = rand.nextInt(1,21);
+                slowo="";
+                dlugosc = rand.nextInt(21-1)+1;
                 for(int i=0; i<dlugosc;i++)
                 {
-                    litera = rand.nextInt(97,123);
-                    slowo+=litera;
+                    litera = rand.nextInt(123-97)+97;
+                    char doSlowa = (char)litera;
+                    slowo+=doSlowa;
                 }
-                System.out.println("Czy" + slowo + "jest słowem? t/n");
+                System.out.println("Czy " + slowo + " jest słowem? t/n");
                 linia = wejscie.nextLine();
                 while (linia.length()!=1){
                     System.out.print("Podaj t lub n");
@@ -31,14 +33,18 @@ public class StringGen{
                 c = linia.charAt(0);
                 for(String s : listaSlow){
                     if(slowo==s){
+                        int indeksik = listaSlow.indexOf(slowo);
+                        listaSlow.remove(indeksik);
                         break;
                     }
                 }
+                listaSlow.add(slowo);
             }
             while(c=='t');
             wejscie.close();
-
-            
-
+            for(String s : listaSlow){
+                System.out.println(s);
+            }
+       
     }
 }
