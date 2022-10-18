@@ -30,10 +30,14 @@ public class IncrementByMe {
                 }
             }
             
+            
             String wyjscie="";
             for(int j=0; j<litery.length;j++){
                 char ch = litery[j];
                 wyjscie=ch+wyjscie;
+            }
+            if(litery[litery.length-1]=='0'){
+                wyjscie = '1'+wyjscie;
             }
             return wyjscie;
         }
