@@ -30,7 +30,6 @@ public class IncrementByMe {
                 }
             }
             
-            
             String wyjscie="";
             for(int j=0; j<litery.length;j++){
                 char ch = litery[j];
@@ -49,7 +48,6 @@ public class IncrementByMe {
         String liczba = wejscie.nextLine();
         System.out.println(Increment(liczba));
         wejscie.close();
-       
        
     }
     
