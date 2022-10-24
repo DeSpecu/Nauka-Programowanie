@@ -35,6 +35,3 @@ for i in range(len(dataDic)):
         print(f"Twój błąd wynosi: {Blad(dataDic[randomKey],guess)}")
 
 print("Punkty: ",right, "Błędne: ", wrong)
-
-
-
