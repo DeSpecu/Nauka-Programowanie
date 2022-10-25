@@ -1,4 +1,4 @@
-def czyAnagrqam(t1="",t2=""):
+def czyAnagram(t1="",t2=""):
     if len(t1)!=len(t2):
         return False
     t1Copy = t1.upper()
@@ -17,4 +17,7 @@ def czyAnagrqam(t1="",t2=""):
 text1=input("Podaje pierwsze słowo\n")
 text2=input("Podaje drugie słowo\n")
 
-print(czyAnagrqam(text1,text2))
+if czyAnagram(text1,text2):
+    print("Anagram")
+else:
+    print("Nie")
