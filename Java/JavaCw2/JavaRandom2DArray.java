@@ -22,15 +22,29 @@ public class JavaApplication1 {
         
         double otwarcie = 40 + (70-40) * rand.nextDouble();
         
-        wartosci[0][1]=otwarcie;
-        wartosci[0][2]=(otwarcie-otwarcie*0.03) + ((otwarcie+otwarcie*0.03)-(otwarcie-otwarcie*0.03)) * rand.nextDouble();
-        wartosci[0][3]=(otwarcie-otwarcie*0.05) + ((otwarcie+otwarcie*0.05)-(otwarcie-otwarcie*0.05)) * rand.nextDouble();
-        wartosci[0][4]=(otwarcie-otwarcie*0.05) + ((otwarcie+otwarcie*0.05)-(otwarcie-otwarcie*0.05)) * rand.nextDouble();
-        
-        for(int i=0;i<wartosci.length(1);i++)
+        wartosci[0][0]=otwarcie;
+        wartosci[1][0]=(otwarcie-otwarcie*0.03) + ((otwarcie+otwarcie*0.03)-(otwarcie-otwarcie*0.03)) * rand.nextDouble();
+        wartosci[2][0]=(otwarcie-otwarcie*0.05) + ((otwarcie+otwarcie*0.05)-(otwarcie-otwarcie*0.05)) * rand.nextDouble();
+        wartosci[3][0]=(otwarcie-otwarcie*0.05) + ((otwarcie+otwarcie*0.05)-(otwarcie-otwarcie*0.05)) * rand.nextDouble();
+        if(wartosci[2][0]>wartosci[3][0])
+            {
+                double pomoc = wartosci[2][0];
+                wartosci[2][0] = wartosci[3][0];
+                wartosci[3][0] = pomoc;
+            }
+        for(int i=1;i<wartosci[0].length;i++)
         {
-            wartosci[0][i]= 40 + (70-40) * rand.nextDouble();
-            
+            double otwarcieNext = wartosci[1][i-1];
+            wartosci[0][i]= otwarcieNext;
+            wartosci[1][i]=(otwarcieNext-otwarcieNext*0.03) + ((otwarcieNext+otwarcieNext*0.05)-(otwarcieNext-otwarcieNext*0.05)) * rand.nextDouble();
+            wartosci[2][i]=(otwarcieNext-otwarcieNext*0.05) + ((otwarcieNext+otwarcieNext*0.05)-(otwarcieNext-otwarcieNext*0.05)) * rand.nextDouble();
+            wartosci[3][i]=(otwarcieNext-otwarcieNext*0.05) + ((otwarcieNext+otwarcieNext*0.05)-(otwarcieNext-otwarcieNext*0.05)) * rand.nextDouble();
+            if(wartosci[2][i]>wartosci[3][i])
+            {
+                double pomoc = wartosci[2][i];
+                wartosci[2][i] = wartosci[3][i];
+                wartosci[3][i] = pomoc;
+            }
         }
             
     }
