@@ -1,6 +1,7 @@
 import random
 
-def blad(a,b):
+#Zadanie 4
+def blad(a,b) -> float:
     bledy = 0
     for x in range(len(a)):
         if a[x]!=b[x]:
@@ -33,6 +34,7 @@ for i in range(len(dataDic)):
     else:
         wrong += 1
         print(f"Twój błąd wynosi: {blad(dataDic[randomKey],guess)}")
+
 
 print("Punkty: ",right, "Błędne: ", wrong)
 
