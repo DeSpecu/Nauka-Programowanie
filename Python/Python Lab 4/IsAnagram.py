@@ -1,6 +1,4 @@
 def czyAnagram(t1="",t2=""):
-    if len(t1)!=len(t2):
-        return False
     t1Copy = t1.upper()
     t2Copy = t2.upper()
     arOfT1 = [x for x in t1Copy if x.isupper()]
