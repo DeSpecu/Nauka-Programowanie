@@ -1,6 +1,6 @@
-def HTMLColor2RGB(color:str) -> list:
+def HTMLColor2RGB(color:str):
     if len(color)!=7:
-        return "Bledne dane"
+        return False
     i=1
     output = []
     while i < len(color):
