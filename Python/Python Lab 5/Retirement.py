@@ -1,11 +1,8 @@
 def read_all_lines_file(file_name):
-    lines = open(file_name).readlines()
-    return lines
+    return open(file_name).readlines()
 
 def save(file_name, dane):
-    file = open(file_name, 'a+')
-    file.write(str(dane))
-    file.write("\n")
+    open(file_name, 'a+').write(f"{str(dane)}\n")
 
 def male(names:list):
     output = []
