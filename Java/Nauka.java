@@ -9,6 +9,36 @@ import java.util.Scanner;
 
 public class Nauka {
 
+    static boolean isPalindrome(String s)
+    {
+        char[] dane = s.toCharArray();
+        for(int i=0; i<s.length();i++)
+        {
+            if(dane[i]!=dane[dane.length-i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static Integer compareTo(String st1, String st2)
+    {
+        for (char c : st1.toCharArray())
+        {
+            for(char ch : st2.toCharArray())
+            {
+                if(c>ch)
+                {
+                    return 1;
+                }
+                else if(ch>c)
+                {
+                    return -1;
+                }
+            }
+        }
+        return 0;
+    }
     public static void main(String[] args)
     {
         Scanner wejscie = new Scanner(System.in);
@@ -168,5 +198,22 @@ public class Nauka {
         //         }
         //     }
         // }
+
+        //System.out.println(compareTo("aaa", "aaa"));
+        //System.out.println(isPalindrome("mokkam"));
+
+        double[] fibo = new double[100];
+        fibo[0]=1;
+        fibo[1]=1;
+
+        for(int i = 2; i<fibo.length; i++)
+        {
+            fibo[i]= fibo[i-1]+fibo[i-2];
+        }
+
+        for(int i = 0; i<fibo.length; i++)
+        {
+            System.out.println(String.format("Pozycja = %d, Wartosc = %f", i+1, fibo[i]));
+        }
     }
 }
