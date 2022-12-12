@@ -7,12 +7,12 @@ class Plansza:
         self.__symbol = False # True - X, False - O
  
     def wyswietl(self):
-        print("="*(self.wielkosc+3))
+        print("="*(self.wielkosc*2-1))
         for wiersz in self.__plansza:
             for krotka in wiersz:
                 print(krotka, end=" ")
             print()
-        print("="*(self.wielkosc+3))
+        print("="*(self.wielkosc*2-1))
  
     def symbol(self):
         if self.__symbol:
@@ -21,7 +21,7 @@ class Plansza:
  
     def sprawdz(self):
 
-        row, column = "", ""
+        row, column, diagonal, diagonal2 = "", "", "", ""
 
         for x in range(self.wielkosc):
             for y in range(self.wielkosc):
@@ -37,6 +37,23 @@ class Plansza:
             row = ""
             column = ""
             
+        change = 0
+        for x in range(self.wielkosc):
+            rowchecked = x
+            for y in range(self.wielkosc):
+                if y+change < self.wielkosc and rowchecked < self.wielkosc:
+                    diagonal += self.__plansza[rowchecked][y+change]
+                    diagonal2 += self.__plansza[rowchecked][self.wielkosc-(y+change)-1]
+                rowchecked += 1
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal)
+            if match is not None:
+                return True
+            else:
+                match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal2)
+                if match is not None:
+                    return True
+            diagonal = ""
+            diagonal2 = ""
         return False
     
     def czypuste(self,x, y):
