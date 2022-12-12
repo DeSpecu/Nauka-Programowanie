@@ -1,3 +1,5 @@
+import re
+
 class Plansza:
     def __init__(self, wielkosc=3):
         self.wielkosc = wielkosc
@@ -18,13 +20,23 @@ class Plansza:
         return "O"
  
     def sprawdz(self):
-        
+
+        row, column = "", ""
+
         for x in range(self.wielkosc):
-            if "-" != self.__plansza[x][0] == self.__plansza[x][1] == self.__plansza[x][2] or "-" != self.__plansza[0][x] == self.__plansza[1][x] == self.__plansza[2][x]:
+            for y in range(self.wielkosc):
+                row += self.__plansza[x][y]
+                column += self.__plansza[y][x]
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,row)
+            if match is not None:
                 return True
-        if "-" != self.__plansza[0][0] == self.__plansza[1][1] == self.__plansza[2][2] or "-" != self.__plansza[0][2] == self.__plansza[1][1] == self.__plansza[2][0]:
-            return True
-        
+            else:
+                match =  re.search(f"{self.symbol()}"*self.wielkosc,column)
+                if match is not None:
+                    return True
+            row = ""
+            column = ""
+            
         return False
     
     def czypuste(self,x, y):
@@ -52,12 +64,11 @@ class Plansza:
             else:
                 print("Miejsce zajęte")
                 break
-            self.wyswietl()
-            self.__symbol = not self.__symbol
             if self.sprawdz():
-                self.__symbol = not self.__symbol
+                self.wyswietl()
                 print(f"Wygrał {self.symbol()}")
                 break
+            self.__symbol = not self.__symbol
 #Do kolejnego zadania
 #rozmiar = input("Podaj wielkość planszy\n")
 p = Plansza(3)
