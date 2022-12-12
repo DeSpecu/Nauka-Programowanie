@@ -22,38 +22,37 @@ class Plansza:
     def sprawdz(self):
 
         row, column, diagonal, diagonal2 = "", "", "", ""
-
-        for x in range(self.wielkosc):
-            for y in range(self.wielkosc):
-                row += self.__plansza[x][y]
-                column += self.__plansza[y][x]
-            match =  re.search(f"{self.symbol()}"*self.wielkosc,row)
-            if match is not None:
-                return True
-            else:
-                match =  re.search(f"{self.symbol()}"*self.wielkosc,column)
-                if match is not None:
-                    return True
-            row = ""
-            column = ""
-            
         change = 0
         for x in range(self.wielkosc):
             rowchecked = x
             for y in range(self.wielkosc):
+
                 if y+change < self.wielkosc and rowchecked < self.wielkosc:
                     diagonal += self.__plansza[rowchecked][y+change]
                     diagonal2 += self.__plansza[rowchecked][self.wielkosc-(y+change)-1]
                 rowchecked += 1
-            match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal)
+                
+                row += self.__plansza[x][y]
+                column += self.__plansza[y][x]
+
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,row)
             if match is not None:
                 return True
-            else:
-                match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal2)
-                if match is not None:
-                    return True
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,column)
+            if match is not None:
+                return True
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal)        
+            if match is not None:
+                return True
+            match =  re.search(f"{self.symbol()}"*self.wielkosc,diagonal2)
+            if match is not None:
+                return True
+
+            row = ""
+            column = ""
             diagonal = ""
             diagonal2 = ""
+
         return False
     
     def czypuste(self,x, y):
