@@ -34,19 +34,11 @@ class Plansza:
                 
                 row += self.__plansza[x][y]
                 column += self.__plansza[y][x]
-
-            match =  re.search(f"{self.symbol()}"*5,row)
-            if match is not None:
-                return True
-            match =  re.search(f"{self.symbol()}"*5,column)
-            if match is not None:
-                return True
-            match =  re.search(f"{self.symbol()}"*5,diagonal)        
-            if match is not None:
-                return True
-            match =  re.search(f"{self.symbol()}"*5,diagonal2)
-            if match is not None:
-                return True
+            
+            for check in [row, column, diagonal, diagonal2]:
+                match = re.search(f"{self.symbol()}"*5, check)
+                if match is not None:
+                    return True
 
             row = ""
             column = ""
