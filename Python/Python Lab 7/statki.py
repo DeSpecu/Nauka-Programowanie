@@ -24,14 +24,17 @@ class Statek2(Statek):
         self.maszt2 = True
 
     def strzal(self, wsp1, wsp2):
+        trafienie = False
         if wsp1 == self.wspolrzedne1 and wsp2 == self.wspolrzedne2:
             self.maszt = False
-            return 1
+            trafienie = True
         elif wsp1 == self.wspolrzedne1 and wsp2 == self.wspolrzedne2+1:
             self.maszt2 = False
-            return 1
+            trafienie = True
         if not self.maszt and not self.maszt2:
             return 2
+        if trafienie:
+            return 1        
         else:
             return 0
         
@@ -46,17 +49,22 @@ class Statek3(Statek):
         self.maszt3 = True
 
     def strzal(self, wsp1, wsp2):
+        trafienie = False
         if wsp1 == self.wspolrzedne1 and wsp2 == self.wspolrzedne2:
             self.maszt = False
-            return 1
+            trafienie = True
         elif wsp1 == self.wspolrzedne1 and wsp2 == self.wspolrzedne2+1:
             self.maszt2 = False
-            return 1
+            trafienie = True
         elif wsp1 == self.wspolrzedne1 and wsp2 == self.wspolrzedne2+2:
             self.maszt3 = False
-            return 1
+            trafienie = True
+        
         if not self.maszt and not self.maszt2 and not self.maszt3:
             return 2
+        if trafienie:
+            return 1
+        
         return 0
 
     def wyswietl(self):
@@ -69,6 +77,7 @@ s3 = Statek3(3,1)
 print(s1.strzal(1,1))
 print(s2.strzal(2,2))
 print(s3.strzal(3,1))
+print(s3.strzal(3,0))
 print(s3.strzal(3,2))
 print(s3.strzal(3,3))
 
