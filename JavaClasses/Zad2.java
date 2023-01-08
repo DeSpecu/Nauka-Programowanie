@@ -5,7 +5,7 @@ class Lancuch{
     char pierwszaLitera;
 
     public Lancuch(){
-        lancuch = "abcdefghij";
+        lancuch = "tak";
         koncowka = "hij";
         pierwszaLitera = 'a';
     }
@@ -15,7 +15,7 @@ class Lancuch{
             this.lancuch = lancuch;
         }
         while(lancuch.length()<5){
-            int forchar = (int)lancuch.charAt(lancuch.length()-1);
+            int forchar = lancuch.charAt(lancuch.length()-1);
             StringBuilder sb = new StringBuilder(lancuch);
             sb.append((char)(forchar+1));
             lancuch = sb.toString();
@@ -37,12 +37,35 @@ class Lancuch{
     public char getPierwszaLitera(){
         return pierwszaLitera;
     }
+
+    public void Merge(String s){
+        StringBuilder sb = new StringBuilder();
+        int len = (s.length()>lancuch.length()) ? lancuch.length():s.length();
+
+        for(int i=0; i<len; i++){
+
+            sb.append(lancuch.charAt(i));
+            sb.append(s.charAt(i));
+        }
+
+        this.lancuch = sb.toString();
+    }
+
+    public int IleASCII(){
+        int toSum;
+        int sum=0;
+        for(int i=0; i<lancuch.length(); i++){
+            toSum = lancuch.charAt(i);
+            sum+=toSum;
+        }
+        return sum;
+    }
 }
 
 public class Zad2 {
     public static void main(String[] args){
 
-        Lancuch l = new Lancuch("si");
-        System.out.println(l.lancuch);
+        Lancuch l = new Lancuch();
+        System.out.println(l.IleASCII());
     }
 }
